@@ -1,25 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+//Habilitando el Router entre las paginas principales
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+//Importando componentes de paginas principales
+import Login from './components/auth/Login';
+import NuevaCuenta from './components/auth/NuevaCuenta';
+import Proyectos from './components/proyectos/Proyectos';
+//Importando Context
+import ProyectoState from './context/proyectos/proyectoState';
+import TareasState from './context/tareas/tareasState';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ProyectoState>
+      <TareasState>
+        <Router> 
+          {/* // Lo que se vera en todas las paginas */}
+            <Switch>
+              {/* Rutas Principales */}
+              <Route exact path="/" component={Login} />
+              <Route exact path="/nueva-cuenta" component={NuevaCuenta} />
+              <Route exact path="/proyectos" component={Proyectos} />
+            </Switch>
+        </Router>
+      </TareasState>
+    </ProyectoState>
   );
 }
 
