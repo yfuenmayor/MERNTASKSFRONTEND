@@ -14,3 +14,16 @@ export const ELIMINAR_TAREA = 'ELIMINAR_TAREA';
 export const ESTADO_TAREA = 'ESTADO_TAREA';
 export const TAREA_ACTUAL = 'TAREA_ACTUAL';
 export const EDITAR_TAREA = 'EDITAR_TAREA';
+
+// Context Alertas //
+export const MOSTRAR_ALERTA = 'MOSTRAR_ALERTA';
+export const OCULTAR_ALERTA = 'OCULTAR_ALERTA';
+
+// Context Auth //
+export const REGISTRO_EXITO = 'REGISTRO_EXITO';
+export const REGISTRO_ERROR = 'REGISTRO_ERROR';
+export const OBTENER_USUARIO = 'OBTENER_USUARIO';
+export const LOGIN_EXITO = 'LOGIN_EXITO';
+export const LOGIN_ERROR = 'LOGIN_ERROR';
+export const LOGOUT = 'LOGOUT';
+
