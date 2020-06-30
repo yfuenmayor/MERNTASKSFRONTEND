@@ -10,8 +10,20 @@ import ProyectoState from './context/proyectos/proyectoState';
 import TareasState from './context/tareas/tareasState';
 import AlertasState from './context/alertas/alertaState';
 import AuthState from './context/auth/authState';
+// Importando funcion para obtener el token y colocarlo en la cabezera
+import tokenAuth from './config/tokenAuth';
+// Importamos el Higher Order Components
+import RutasPrivadas from './components/Rutas/RutasPrivadas';
 
 
+//Creamos el token en la cabezera (esto para cuando refresquen la pagino no se pierdan los datos del usuario)
+const token = localStorage.getItem('token');
+if (token) {
+  tokenAuth(token);
+}
+
+
+//Funcion Ppal
 function App() {
   
   return (
@@ -25,7 +37,7 @@ function App() {
                   {/* Rutas Principales */}
                   <Route exact path="/" component={Login} />
                   <Route exact path="/nueva-cuenta" component={NuevaCuenta} />
-                  <Route exact path="/proyectos" component={Proyectos} />
+                  <RutasPrivadas exact path="/proyectos" component={Proyectos} />
                 </Switch>
             </Router>
           </AuthState>

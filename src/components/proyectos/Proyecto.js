@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
+// Importando Context necesarios
 import proyectoContext from '../../context/proyectos/proyectoContext';
 import tareasContext from '../../context/tareas/tareasContext';
+
 
 
 const Proyecto = ({proyecto}) => {
@@ -30,7 +32,7 @@ const Proyecto = ({proyecto}) => {
              <button
                 type="button"
                 className="btn btn-blank"
-                onClick={ () => obtenerProyectoActual(proyecto.id)}
+                onClick={ () => obtenerProyectoActual(proyecto._id)}
              >{proyecto.nombre}</button>
          </li>
     );

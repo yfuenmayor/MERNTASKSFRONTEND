@@ -9,15 +9,15 @@ const Tarea = ({tarea}) => {
     const tareaContext = useContext(tareasContext);
 
     // Destructuring //
-    const { nombre, estado, proyectoId} = tarea;
+    const { nombre, estado, proyecto_id} = tarea;
     //Obtenemos la funcion para agregar la tarea al state general de tareas
-    const { eliminarTarea, obtenerTareas, cambiarEdoTarea, getTareaActual } = tareaContext;
+    const { eliminarTarea, obtenerTareas, getTareaActual, updateTarea } = tareaContext;
     
     // FUNCIONES //
     // Para eliminar una tarea al presional el boton de eliminar
-    const eliminaTarea = id => {
-        eliminarTarea(id);
-        obtenerTareas(proyectoId);
+    const eliminaTarea = id => {        
+        eliminarTarea(id, proyecto_id);
+        obtenerTareas(proyecto_id);
     }
 
     //Cambiar estado de las tareas 
@@ -29,7 +29,7 @@ const Tarea = ({tarea}) => {
             tarea.estado = true;
         }
         //pasamos la tarea modificada
-        cambiarEdoTarea(tarea);
+        updateTarea(tarea)
     }
 
     // Agrega una tarea para la edicion de la misma
@@ -65,7 +65,7 @@ const Tarea = ({tarea}) => {
                 <button
                     type="button"
                     className="btn btn-secundario"
-                    onClick={ () => eliminaTarea(tarea.id)}
+                    onClick={ () => eliminaTarea(tarea._id)}
                 >Eliminar</button>
             </div>
         </li>

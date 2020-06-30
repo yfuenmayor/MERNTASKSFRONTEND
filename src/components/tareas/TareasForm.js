@@ -66,8 +66,7 @@ const TareasForm = () => {
         // Verificamos si es edicion o insercion
         if (tareaSeleccionada === null) {
             // Agregar tarea al state de tarea
-            tarea.proyectoId = proyectoActual.id;
-            tarea.estado = false;
+            tarea.proyecto_id = proyectoActual._id;
             agregarTarea(tarea);
         } else {
             //Editamos la tarea
@@ -75,7 +74,7 @@ const TareasForm = () => {
         }
 
         //Obtener tareas del proyecto 
-        obtenerTareas(proyectoActual.id);
+        obtenerTareas(proyectoActual._id);
         //Reiniciar el form
         setTarea({
             nombre: ''

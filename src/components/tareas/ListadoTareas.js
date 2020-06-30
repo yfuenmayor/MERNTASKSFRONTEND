@@ -19,8 +19,7 @@ const ListadoTareas = () => {
     // Obtenemos el proyecto seleccionado
     const { proyecto, eliminarProyecto } = proyectosContext;
     const { tareasproyecto } = tareaContext;
-
-
+    
     //Validando si proyecto es null (iniciando)
     if(!proyecto) return <h2>Selecciona un Proyecto</h2>;
 
@@ -31,7 +30,7 @@ const ListadoTareas = () => {
     
     //Eliminar proyecto
     const eliminaProyecto = () => {
-        eliminarProyecto(proyectoActual.id)
+        eliminarProyecto(proyectoActual._id)
     }
 
     return (
@@ -43,7 +42,7 @@ const ListadoTareas = () => {
                     <TransitionGroup>
                         {tareasproyecto.map( tarea => (
                             <CSSTransition
-                                key={tarea.id}
+                                key={tarea._id}
                                 timeout={200}
                                 classNames="tarea"
                             >

@@ -1,14 +1,33 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 //Obtenemos link de direccionamiento
 import { Link } from 'react-router-dom';
-// Importamos el context de alerta
+// Importamos context necesarios
 import AlertaContext from '../../context/alertas/alertaContext';
+import AuthContext from '../../context/auth/authContext';
 
 
-const NuevaCuenta = () => {
+const NuevaCuenta = (props) => {
     // DESTRUCTURING DEL CONTEXT //
+    // Alertas
     const alertaContext = useContext(AlertaContext);
     const { alerta, validateAlert } = alertaContext;
+    // Auth
+    const authContext = useContext(AuthContext);
+    const { autenticado, mensaje, registrarUsuario } = authContext;
+
+    // UseEffect para accionar tras la auth //
+    useEffect(() => {
+        // Si registramos correctamente
+        if(autenticado){
+            props.history.push('/proyectos');
+        }
+
+        //Mostramos mensaje de error
+        if (mensaje) {
+            validateAlert(mensaje.msg, mensaje.categoria);
+        }
+        // eslint-disable-next-line 
+    }, [ mensaje, autenticado, props.history]);
 
     // STATES
     // State para guardar usuario
@@ -53,6 +72,11 @@ const NuevaCuenta = () => {
         }
 
         // 4.-Pasarlo al Action 
+        registrarUsuario({
+            nombre,
+            email,
+            password
+        })
         
     }
 
